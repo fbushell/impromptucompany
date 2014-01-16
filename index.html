@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Impromptu Company</title>
+    <meta name="desctiption" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/Detector.js"></script>
+    <script type="text/javascript" src="http://fast.fonts.net/jsapi/ab56f1bc-518e-4015-8c51-b4420e9fe975.js"></script>
+    <script src="js/three.min.js"></script>
+		<script src="js/stats.min.js"></script>
+	</head>
+	<body>
+		<div id="loader"></div>
+		<section class="one">
+			<a href="http://get.webgl.org"><div id="notice"></div></a>
+			<div class="logo">
+				<img src="img/logo.png" />
+			</div>
+			<script>
+				if (Detector.webgl) {
+				   
+					var container, stats;
+					var camera, scene, renderer, group, particle;
+					var camera, scene, renderer, particles, geometry, materials = [], parameters, i, h, color, sprite, size;
+					var mouseX = 0, mouseY = 0;
+
+					var windowHalfX = window.innerWidth / 2;
+					var windowHalfY = window.innerHeight / 2;
+
+					init();
+					animate();
+
+					function init() {
+
+						container = document.createElement( 'div' );
+						document.body.appendChild( container );
+
+						camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 3000 );
+						camera.position.z = 500;
+
+						scene = new THREE.Scene();
+						group = new THREE.Object3D();
+
+						geometry = new THREE.Geometry();
+
+						sprite1 = THREE.ImageUtils.loadTexture( "img/sprite01.png" );
+						sprite2 = THREE.ImageUtils.loadTexture( "img/sprite02.png" );
+						sprite3 = THREE.ImageUtils.loadTexture( "img/sprite03.png" );
+						sprite4 = THREE.ImageUtils.loadTexture( "img/sprite04.png" );
+
+						for ( i = 0; i < 70; i ++ ) {
+
+							var vertex = new THREE.Vector3();
+							vertex.x = Math.random() * 1000 - 500;
+							vertex.y = Math.random() * 1000 - 500;
+							vertex.z = Math.random() * 1000 - 500;
+						
+							geometry.vertices.push( vertex );
+
+						}
+
+						parameters = [
+						   [  sprite1, 70 ],
+							 [  sprite2, 30 ],
+						   [  sprite3, 20 ],
+						   [  sprite4, 20 ],
+						];
+
+						for ( i = 0; i < parameters.length; i++ ) {
+
+							sprite = parameters[i][0];
+							size   = parameters[i][1];
+
+							materials[i] = new THREE.ParticleSystemMaterial( { 
+								size: size, 
+								map: sprite, 
+								//sizeAttenuation: false,
+								blending: THREE.AdditiveBlending, 
+								depthTest: false, 
+								transparent : true 
+							} );
+
+							particles = new THREE.ParticleSystem( geometry, materials[i] );
+
+							particles.rotation.x = Math.random() * 6;
+							particles.rotation.y = Math.random() * 6;
+							particles.rotation.z = Math.random() * 6;
+							group.add( particles );
+							scene.add( group );
+
+							}
+
+							renderer = new THREE.WebGLRenderer( { clearAlpha: 1 } );
+							renderer.setSize( window.innerWidth, window.innerHeight );
+							container.appendChild( renderer.domElement );
+
+						document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+						document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+						document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+
+						//
+
+						window.addEventListener( 'resize', onWindowResize, false );
+
+					}
+
+					function onWindowResize() {
+
+						windowHalfX = window.innerWidth / 2;
+						windowHalfY = window.innerHeight / 2;
+
+						camera.aspect = window.innerWidth / window.innerHeight;
+						camera.updateProjectionMatrix();
+
+						renderer.setSize( window.innerWidth, window.innerHeight );
+
+					}
+
+					function onDocumentMouseMove( event ) {
+
+						mouseX = event.clientX - windowHalfX;
+						mouseY = event.clientY - windowHalfY;
+					}
+
+					function onDocumentTouchStart( event ) {
+
+						if ( event.touches.length === 1 ) {
+
+							event.preventDefault();
+
+							mouseX = event.touches[ 0 ].pageX - windowHalfX;
+							mouseY = event.touches[ 0 ].pageY - windowHalfY;
+
+						}
+
+					}
+
+					function onDocumentTouchMove( event ) {
+
+						if ( event.touches.length === 1 ) {
+
+							event.preventDefault();
+
+							mouseX = event.touches[ 0 ].pageX - windowHalfX;
+							mouseY = event.touches[ 0 ].pageY - windowHalfY;
+
+						}
+
+					}
+
+					function animate() {
+						requestAnimationFrame( animate );
+
+						render();
+						//stats.update();
+					}
+
+					function render() {
+						camera.position.x += ( mouseX - camera.position.x ) * 0.05;
+						camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
+						camera.lookAt( scene.position );
+
+						// particles.rotation.x += 0.001;
+						// particles.rotation.y += 0.001;
+
+						group.rotation.x += 0.0008;
+						group.rotation.y += 0.0008;
+
+						renderer.render( scene, camera );
+					}
+				// modernizer else 
+				} else { 
+					var msg = 'Update your browser for the full experience :)';
+					document.getElementById( 'notice' ).innerHTML = msg;
+				}
+			</script>
+		</section>
+
+		<section class="two">
+			<div class="intro">
+				<p>We celebrate to punctuate time. To honor achievements of the past and revel in the possibility of what's to come. We elevate the mundane to festive heights to cherish milestones. We celebrate the high, the low, the loud, the quiet, the special, the everyday.</p>
+
+				<p>Impromptu Company crafts moments. We design platforms for enjoyment and curate experiences, framing every element around your closest company. Our thoughtful design and production address every detail to fabricate modern ceremony, making it look effortless while allowing for surprises, spontaneity, and mystery.</p>
+
+				<p>And you can cry if you want to.</p>
+			</div>
+			
+			<div class="info">
+				<div class="contact">
+					<a href="mailto:hello@impromptu-company.com">
+						hello@impromptu-company.com
+					</a>
+				</div>
+				<div class="phone">
+					<a href="tel:303-907-2959">+1 303 907 2959</a>
+				</div>
+				<div class="social">
+					<a class="fb" href="https://www.facebook.com/pages/Impromptu-Company/1412969498943352" target="_blank">facebook</a><br>
+					<a class="tw" href="https://twitter.com/impromptu_co" target="_blank">twitter</a><br>
+					<a class="in" href="http://instagram.com/impromptucompany" target="_blank">instagram</a>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="footer-logo">
+				<img src="img/logo-180.png">
+			</div>
+		</footer>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      var _gaq=[['_setAccount','UA-XXXXXXX'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+	</body>
+</html>
