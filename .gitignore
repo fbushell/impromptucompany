@@ -1,0 +1,6 @@
+# Ignore .htaccess as it may differ on dev environments
+.htaccess
+# Ignore SASS cache files
+.sass-cache*
+# Ignore .DS_Store files
+.DS_Store
