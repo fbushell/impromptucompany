@@ -13,18 +13,21 @@
 			var self = this;
 
 			// Variables
-			self.win        = {};
-			self.$html      = $("html, body");
-			self.docuHeight = $(document).height();
-			self.windHeight = $(window).height();
-			self.scrollPos  = null;
-			self.$logo      = $('div.logo');
+			self.win         = {};
+			self.$html       = $("html, body");
+			self.docuHeight  = $(document).height();
+			self.windHeight  = $(window).height();
+			self.scrollPos   = null;
+			self.$logo       = $('div.logo');
+			self.$what       = $('div.what');
 			self.$sectionOne = $('section.one');
 
 			// Initilaize methods
 			self.windowSizeFunction();
 			self.centerLogo();
 			self.fallbackIntro();
+			page.fadeLogo();
+			page.fadeWhat();
 
 			// Init event methods
 			self.$sectionOne.on('click', self.scrollToTwo);
@@ -34,7 +37,7 @@
 			if (!Detector.webgl) {
 			  page.$html.addClass('no-webgl');
 			}
-			},
+		},
 
 		centerLogo: function() {
 			var self = this;
@@ -91,6 +94,15 @@
 			// }
 		},
 
+		fadeWhat: function() {
+			var self = this;
+			var opacity = 1 - (self.scrollPos * .004) ;
+
+			if ( self.scrollPos < 370 ) {
+				self.$what.css('opacity', opacity);
+			}
+		}
+
 	};
 
 
@@ -119,6 +131,7 @@
 	$window.scroll(function(){
 		page.scrollPosition();
 		page.fadeLogo();
+		page.fadeWhat();
 	});		
 
 	// Window resize

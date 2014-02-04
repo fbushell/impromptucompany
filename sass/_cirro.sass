@@ -37,6 +37,22 @@
   -o-animation: rotateIt 5s infinite linear
   animation: rotateIt 5s infinite linear
 
+.what
+  position: fixed
+  z-index: 400
+  top: 50%
+  -webkit-font-smoothing: antialiased
+  left: 62%
+  text-align: center
+  margin-top: 90px
+  margin-left: -71.5px
+
+@media (max-width: 480px)
+  .what
+    bottom: 20px
+    top: 50px
+    left: 50%
+    margin-top: 0
 
 
 #loader
@@ -71,6 +87,8 @@ html.no-webgl
     -webkit-background-size: cover
   .logo
     z-index: 420
+  section.two
+    top: 0
 
 html.webgl
   section.one
@@ -83,17 +101,25 @@ section.one
   height: 100%
   width: 100%
   cursor: pointer
+  + div
+    position: fixed
+    height: 100%
+  .what
+    color: white
 
 section.two
   position: relative
   width: 100%
   padding: 200px 0 150px
-  background: #F9C4D4
+  background: #FCD9D8
   color: $black
+  top: 100%
 
 .info
+  position: relative
+  z-index: 600
   text-align: center
-  padding: 300px 0 50px
+  padding: 300px 0 500px
   .phone
     margin-bottom: 30px
 
@@ -111,12 +137,12 @@ section.two
   -webkit-transform: rotate(90deg)
 
 .intro
+  position: relative
+  z-index: 600
   width: 90%
   max-width: 700px
   margin: 0 auto
   padding-top: 100px
-  font-family: Georgia, serif
-  font-size: 20px
   -webkit-font-smoothing: antialiased
 
 //.social
@@ -160,9 +186,13 @@ section.two
     padding: 200px 0 600px 0
 
 footer
-  background: #F9C4D4
   color: $black
-  padding: 100px 0
+  padding: 0 0 100px 0
+  position: absolute
+  left: 0
+  bottom: 0
+  right: 0
+  z-index: 600
   .footer-logo
     width: 400px
     margin: 0 auto
