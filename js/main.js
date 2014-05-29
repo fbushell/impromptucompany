@@ -21,13 +21,12 @@
 			self.$logo       = $('div.logo');
 			self.$what       = $('div.what');
 			self.$sectionOne = $('section.one');
+			self.$sectionTwo = $('section.two');
 
 			// Initilaize methods
 			self.windowSizeFunction();
 			self.centerLogo();
 			self.fallbackIntro();
-			page.fadeLogo();
-			page.fadeWhat();
 
 			// Init event methods
 			self.$sectionOne.on('click', self.scrollToTwo);
@@ -54,18 +53,6 @@
         scrollTop: $two.offset().top
     	}, 1000);
 		},
-	
-		// Its a kanomai Easter
-		loveEgg: function() {
-			var self = this;
-
-			 $( window ).konami({  
-	        cheat: function() {
-	        		$('#background-set-later').css('display', 'inline');
-	        		$('.contained-section').css('background', 'rgba(255,255,255,.0)')
-	        }
-	    });
-		},
 
 		// Find the width of the window
 		windowSizeFunction: function() {
@@ -86,12 +73,6 @@
 			if (self.scrollPos < 370) {
 				self.$logo.css('opacity', opacity);
 			}
-			
-			// if (self.scrollPos > self.windHeight) {
-			// 	self.$logo.css('display', 'none');
-			// } else {
-			// 	self.$logo.css('display', 'block');
-			// }
 		},
 
 		fadeWhat: function() {
@@ -133,6 +114,12 @@
 		page.fadeLogo();
 		page.fadeWhat();
 	});		
+
+	$( window ).konami({  
+	  cheat: function() {
+	    page.$sectionTwo.css('background', 'url("img/ipad.gif") scroll');
+	  }
+  });
 
 	// Window resize
 	$window.resize(function(){
