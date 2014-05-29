@@ -22,14 +22,57 @@
 			self.$what       = $('div.what');
 			self.$sectionOne = $('section.one');
 			self.$sectionTwo = $('section.two');
+			self.$slider 		 = $('.proj-slider');
+			self.$arrow      = $('.arrow');
 
 			// Initilaize methods
 			self.windowSizeFunction();
 			self.centerLogo();
+			self.sliderInit();
 			self.fallbackIntro();
+			self.fadeArrow();
+			page.fadeLogo();
+			page.fadeWhat();
 
 			// Init event methods
 			self.$sectionOne.on('click', self.scrollToTwo);
+		},
+
+		fadeArrow: function() {
+			var self = this;
+			if (self.$arrow == 'undefined') {return;}
+			
+			if (self.scrollPos > 50) {
+				self.$arrow.css('opacity', 0);
+			} else {
+				self.$arrow.css('opacity', 1);
+			}
+		},
+
+		sliderInit: function() {
+			page.$slider.royalSlider({
+				drag: true,
+				autoScaleSlider: true,
+				autoScaleSliderWidth: 800,
+				autoScaleSliderHeight: 450,
+				numImagesToPreload: 4,
+				mageAlignCenter: true,
+				usePreloader: true,
+				loop: true,
+				imageScaleMode: 'fit',
+				//controlNavigation:	'bullets',
+				slidesSpacing: 30,
+				keyboardNavEnabled: true,
+        visibleNearby: {
+            enabled: true,
+            centerArea: 0.6,
+            center: true,
+            //breakpoint: 650,
+            // breakpointCenterArea: 0.64,
+            navigateByCenterClick: true
+        }
+			});
+
 		},
 
 		fallbackIntro: function() {
@@ -68,19 +111,31 @@
 
 		fadeLogo: function() {
 			var self = this;
-			var opacity = 1 - (self.scrollPos * .002) ;
+			var opacity = 1 - (self.scrollPos * .002);
+
+			if (self.$arrow == 'undefined') {return;}
 			
 			if (self.scrollPos < 370) {
 				self.$logo.css('opacity', opacity);
+			}
+
+			if (self.scrollPos > 370) {
+				self.$logo.css('opacity', '0.29');
 			}
 		},
 
 		fadeWhat: function() {
 			var self = this;
-			var opacity = 1 - (self.scrollPos * .004) ;
+			var opacity = 1 - (self.scrollPos * .004);
+
+			if (self.$arrow == 'undefined') {return;}
 
 			if ( self.scrollPos < 370 ) {
 				self.$what.css('opacity', opacity);
+			}
+
+			if (self.scrollPos > 370) {
+				self.$what.css('opacity', '0');
 			}
 		}
 
@@ -113,6 +168,7 @@
 		page.scrollPosition();
 		page.fadeLogo();
 		page.fadeWhat();
+		page.fadeArrow();
 	});		
 
 	$( window ).konami({  

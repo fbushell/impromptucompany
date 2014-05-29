@@ -64,6 +64,7 @@
   background-image: url('../img/loading.gif') 
   background-repeat: no-repeat 
   background-position: center center 
+  background-size: 35px
   background-color: black
   z-index: 666
 
@@ -74,6 +75,9 @@
   font-size: 0.6em
   &:hover
     background: pink
+
+@media (max-width: 480px)
+  display: none !important
 
 html.no-webgl
   section.one
@@ -106,12 +110,21 @@ section.one
     height: 100%
   .what
     color: white
+  .arrow
+    position: fixed
+    bottom: 30px
+    left: 50%
+    margin-left: -12.5px
+    z-index: 420
+    transition: 300ms
+    -moz-transition: 300ms
+    -webkit-transition: 300ms
 
 section.two
   position: relative
   width: 100%
-  padding: 200px 0 150px
-  background: #FCD9D8
+  padding: 50px 0 150px
+  background: lighten(#FCD9D8, 3)
   color: $black
   top: 100%
 
@@ -119,22 +132,41 @@ section.two
   position: relative
   z-index: 600
   text-align: center
-  padding: 300px 0 800px
+  padding: 50px 0 500px
   .phone
     margin-bottom: 30px
 
+.proj-slider
+  position: relative
+  z-index: 469
+
+.slider-wrap
+  overflow: hidden
+
+//.slider-wrap
+//  margin: 0 5%
+//  overflow: hidden
+//  box-shadow: 0 0 30px #333
+//  -moz-box-shadow: 0 0 30px #333
+//  -webkit-box-shadow: 0 0 30px #333
+
+// .slider-wrap img
+//   box-shadow: 0 0 30px #333
+//   -moz-box-shadow: 0 0 30px #333
+//   -webkit-box-shadow: 0 0 30px #333
+
 //.contact
-  position: fixed
-  font-family: $headingsFontFamily
-  top: 40px
-  right: 5px
-  z-index: 100
-  font-size: 19px
-  text-transform: lowercase
-  transform: rotate(90deg)
-  -o-transform: rotate(90deg)
-  -moz-transform: rotate(90deg)
-  -webkit-transform: rotate(90deg)
+//  position: fixed
+//  font-family: $headingsFontFamily
+//  top: 40px
+//  right: 5px
+//  z-index: 100
+//  font-size: 19px
+//  text-transform: lowercase
+//  transform: rotate(90deg)
+//  -o-transform: rotate(90deg)
+//  -moz-transform: rotate(90deg)
+//  -webkit-transform: rotate(90deg)
 
 .intro
   position: relative
@@ -142,7 +174,7 @@ section.two
   width: 90%
   max-width: 700px
   margin: 0 auto
-  padding-top: 100px
+  padding: 100px 0 50px 0
   -webkit-font-smoothing: antialiased
 
 //.social
@@ -164,9 +196,6 @@ section.two
     -o-transform: rotate(-90deg)
     -moz-transform: rotate(-90deg)
     -webkit-transform: rotate(-90deg)
-
-
-
 
 .logo
   position: fixed
