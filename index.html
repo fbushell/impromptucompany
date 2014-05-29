@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-
-<!--
-site by frankie bushell
-frank@cirrously.com
--->
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!--
+		site by frankie bushell
+		frank@wearecirro.com
+		-->
     <title>Impromptu Company</title>
-    <meta name="desctiption" content="">
+    <meta name="desctiption" content="We celebrate to punctuate time. To honor achievements of the past and revel in the possibility of what's to come. We elevate the mundane to festive heights to cherish milestones. We celebrate the high, the low, the loud, the quiet, the special, the everyday.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="js/Detector.js"></script>
     <script type="text/javascript" src="//use.typekit.net/vbm6vmt.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script src="js/three.min.js"></script>
 		<script src="js/stats.min.js"></script>
 	</head>
@@ -41,8 +39,6 @@ frank@cirrously.com
 					var windowHalfX = window.innerWidth / 2;
 					var windowHalfY = window.innerHeight / 2;
 
-					init();
-					animate();
 
 					function init() {
 
@@ -162,13 +158,6 @@ frank@cirrously.com
 
 					}
 
-					function animate() {
-						requestAnimationFrame( animate );
-
-						render();
-						//stats.update();
-					}
-
 					function render() {
 						camera.position.x += ( mouseX - camera.position.x ) * 0.05;
 						camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
@@ -182,6 +171,16 @@ frank@cirrously.com
 
 						renderer.render( scene, camera );
 					}
+
+					function animate() {
+						requestAnimationFrame( animate );
+
+						render();
+						//stats.update();
+					}
+
+					init();
+					animate();
 				// modernizer else 
 				} else { 
 					var msg = 'Update your browser for the full experience :)';
@@ -202,23 +201,38 @@ frank@cirrously.com
 
 			<div class="slider-wrap">
 				<div class="proj-slider">
-					<img src="img/slider/001.jpg" />
-					<img src="img/slider/002.jpeg" />
-					<img src="img/slider/003.png" />
-					<img src="img/slider/004.jpeg" />
-					<img src="img/slider/005.jpg" />
-					<img src="img/slider/006.jpg" />
-					<img src="img/slider/007.jpg" />
-					<img src="img/slider/008.png" />
-					<img src="img/slider/009.png" />
-					<img src="img/slider/010.jpeg" />
-					<img src="img/slider/011.png" />
-					<img src="img/slider/012.jpg" />
-					<img src="img/slider/013.jpg" />
-					<img src="img/slider/014.png" />
-					<img src="img/slider/015.png" />
-					<img src="img/slider/016.jpg" />
-
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/002.jpeg 1024w, img/slider/002-small.jpeg 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/006.jpg 1024w, img/slider/006-small.jpg 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/003.png 1024w, img/slider/003-small.png 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/004.jpeg 1024w, img/slider/004-small.jpeg 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/005.jpg 1024w, img/slider/005-small.jpg 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/007.jpg 1024w, img/slider/007-small.jpg 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/008.png 1024w, img/slider/008-small.png 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/009.png 1024w, img/slider/009-small.png 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/010.jpeg 1024w, img/slider/010-small.jpeg 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/011.png 1024w, img/slider/011-small.png 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/012.jpg 1024w, img/slider/012-small.jpg 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/013.jpg 1024w, img/slider/013-small.jpg 900w">
+					<!-- <img sizes="(min-width: 900px)"
+srcset="img/slider/001.jpg 1024w, img/slider/001-small.jpg 900w"> -->
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/014.png 1024w, img/slider/014-small.png 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/015.png 1024w, img/slider/015-small.png 900w">
+					<img sizes="(min-width: 900px)"
+srcset="img/slider/016.jpg 1024w, img/slider/016-small.jpg 900w">				
 				</div>
 			</div>
 			
@@ -239,7 +253,7 @@ frank@cirrously.com
 			</div>
 			<footer>
 				<div class="footer-logo">
-					<img src="img/logo-180.png">
+					<img src="img/logo-180.png" />
 				</div>
 			</footer>
 		</section>
@@ -248,6 +262,11 @@ frank@cirrously.com
 		<script src="js/jquery.royalslider.min.js"></script>
 		<script src="js/jquery.konami.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+		// Picture element HTML5 shiv
+		document.createElement( "picture" );
+		</script>
+		<script src="js/picturefill.min.js" async></script>
     <script>
       var _gaq=[['_setAccount','UA-47755918-1'],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

@@ -40,7 +40,7 @@
 
 		fadeArrow: function() {
 			var self = this;
-			if (self.$arrow == 'undefined') {return;}
+			if (typeof(self.$arrow) === 'undefined') {return;}
 			
 			if (self.scrollPos > 50) {
 				self.$arrow.css('opacity', 0);
@@ -60,7 +60,6 @@
 				usePreloader: true,
 				loop: true,
 				imageScaleMode: 'fit',
-				//controlNavigation:	'bullets',
 				slidesSpacing: 30,
 				keyboardNavEnabled: true,
         visibleNearby: {
@@ -113,28 +112,24 @@
 			var self = this;
 			var opacity = 1 - (self.scrollPos * .002);
 
-			if (self.$arrow == 'undefined') {return;}
+			if (typeof(self.$logo) === 'undefined') {return;}
 			
-			if (self.scrollPos < 370) {
-				self.$logo.css('opacity', opacity);
-			}
-
-			if (self.scrollPos > 370) {
-				self.$logo.css('opacity', '0.29');
-			}
+				if (self.scrollPos < 370) {
+					self.$logo.css('opacity', opacity);
+				} else {
+					self.$logo.css('opacity', 0.29);
+				}
 		},
 
 		fadeWhat: function() {
 			var self = this;
 			var opacity = 1 - (self.scrollPos * .004);
 
-			if (self.$arrow == 'undefined') {return;}
+			if (typeof(self.$what) === 'undefined') {return;}
 
 			if ( self.scrollPos < 370 ) {
 				self.$what.css('opacity', opacity);
-			}
-
-			if (self.scrollPos > 370) {
+			} else {
 				self.$what.css('opacity', '0');
 			}
 		}
