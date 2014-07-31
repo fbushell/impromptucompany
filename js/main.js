@@ -28,11 +28,11 @@
 			// Initilaize methods
 			self.windowSizeFunction();
 			self.centerLogo();
-			self.sliderInit();
 			self.fallbackIntro();
 			self.fadeArrow();
 			page.fadeLogo();
 			page.fadeWhat();
+			self.sliderInit();
 
 			// Init event methods
 			self.$sectionOne.on('click', self.scrollToTwo);
@@ -55,9 +55,9 @@
 				autoScaleSlider: true,
 				autoScaleSliderWidth: 800,
 				autoScaleSliderHeight: 450,
-				numImagesToPreload: 4,
-				mageAlignCenter: true,
+				imageAlignCenter: true,
 				usePreloader: true,
+				numImagesToPreload: 2,
 				loop: true,
 				imageScaleMode: 'fit',
 				slidesSpacing: 30,
